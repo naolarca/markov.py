@@ -1,10 +1,12 @@
 #liste de ponctuation
 PONC = ["!", '"', "'", " ", "’", ")", "(", ",", ".", ";", ":", "?", "-", "_", "«", "»"]
 
+
 #Structure de mots et de frquence
 class MyStruct():
     mot = []
     frequence = []
+
 
 
 #liste ordonnee pour nieme mot plus frequent
@@ -42,6 +44,7 @@ def mergeSort(alist):
     #print("Merging ",alist)
     return alist
 
+
 #Unigrammeeeeeeeee
 def unigramme(fichier):
     with open(fichier, 'r', encoding='utf-8') as f:
@@ -67,6 +70,7 @@ def unigramme(fichier):
         uni.mot.append(smallWord)
         uni.frequence.append(counts[smallWord])
     return uni
+
 
 #bigrammeeeeeeeee
 def bigramme(fichier):
@@ -132,6 +136,7 @@ def ngramme(fichier, n):
     for split_string in counts:
         print(split_string, counts[split_string])
 
+
 #nieme mot le plus frequent pour unigramme
 def motFreqUni(index):
     uni= unigramme("Victor Hugo - L'homme qui rit.txt")
@@ -144,9 +149,10 @@ def motFreqUni(index):
     print(uniFreq[index])
     print(lesMot)
 
+
 #nieme mot plus frequent pour bigramme
 def motFreqBi(index):
-    bi= bigramme("Victor Hugo - L'homme qui rit.txt")
+    bi= bigramme("Victor Hugo - Notre-Dame de Paris.txt")
     copieFreq = bi.frequence[:]
     uniFreq = mergeSort(bi.frequence)
 
@@ -156,8 +162,11 @@ def motFreqBi(index):
     print(uniFreq[index])
     print(lesMot)
 
+
+#MAIN
 def main():
-    motFreqBi(0)
+    ngramme("Victor Hugo - Les miserables - Tome I.txt", 1)
+
     #unigramme("Victor Hugo - L'homme qui rit.txt")
 
 main()
