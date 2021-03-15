@@ -45,7 +45,7 @@ def mergeSort(alist):
     return alist
 
 
-#Unigrammeeeeeeeee
+#Unigrammeeeeeeeee (sans punctuation par defaut)
 def unigramme(fichier):
     with open(fichier, 'r', encoding='utf-8') as f:
         counts = {}
@@ -72,7 +72,7 @@ def unigramme(fichier):
     return uni
 
 
-#bigrammeeeeeeeee
+#bigrammeeeeeeeee (sans punctuation par defaut)
 def bigramme(fichier):
     with open(fichier, 'r', encoding='utf-8') as f:
         livre = []
@@ -104,7 +104,7 @@ def bigramme(fichier):
     return bi
 
 
-#ngrammeeeeeeeeee
+#ngrammeeeeeeeeee (sans punctuation par defaut)
 def ngramme(fichier, n):
     with open(fichier, 'r', encoding='utf-8') as f:
         livre = []
@@ -162,7 +162,6 @@ def motFreqBi(index):
     print(uniFreq[index])
     print(lesMot)
 
-
 #MAIN
 def main():
     ngramme("Victor Hugo - Les miserables - Tome I.txt", 1)
@@ -170,3 +169,46 @@ def main():
     #unigramme("Victor Hugo - L'homme qui rit.txt")
 
 main()
+
+#TODO: LES FONCTIONS SUIVANTES SONT A REALISER
+def selectionAuteur(nomAuteur):
+    print("Auteur:"+ nomAuteur)
+    #il doit y avoir un repertoire contenant les sous repertoires des auteurs
+    #selon la selection de lauteur a traiter, differents textes seront regardes
+
+def UniAvecPunct():
+    print("wesh...")
+    #les ponctuactions sont alors consideres comme un mot
+    # on doit le faire pour bi et ngramme aussi
+
+def selectionModeAnalyse(Mode):
+    print("wesh...")
+    #mode d'analyse:  -m 1 indique de faire les calculs avec des unigrammes, -m 2 avec des bigrammes.
+
+def generationTexte(nbMots, fichierSortie):
+    print("wesh...")
+    # generation dun texte: le nombre de mots Ã  generer doit Ãªtre indique,le nom du fichier en sortie est indique
+
+def rangMot(mot):
+    print("wesh...")
+    # le rang d'un certain mot, on utilise avec les fonctions motFreq uni et bi....
+    # on en a besoin pour connaitre le rang d'un certain mot pour un certain auteur.  L'auteur doit etre
+    # ###       donnÃ© avec le parametre -a, et un mot doit suivre -F:   par exemple:   -a Verne -F Cyrus
+
+def ensembleOeuvre():
+    print("wesh...")
+    # Le systeme doit toujours traiter l'ensemble des oeuvres de l'ensemble des auteurs.  Selon la presence et la valeur
+    # ###  des autres parametres, le systeme produira differentes sorties:
+    # pour le moment fait avec une seule oeuvre
+
+#TODO: LES POINTS SUIVANTS EN RESPECTANT FORMAT SORTIE
+###  avec -a, -g, -G:  generation d'un texte aleatoire avec les caracteristiques de l'auteur identifie
+###  avec -a, -F:  imprimer la frequence d'un mot d'un certain auteur.  Format de sortie:  "auteur:  mot  frequence"
+###                la frequence doit Ãªtre un nombre reel entre 0 et 1, qui represente la probabilite de ce mot
+###                pour cet auteur
+###  avec -f:  indiquer l'auteur le plus probable du texte identifie par le nom de fichier qui suit -f
+###            Format de sortie:  "nom du fichier: auteur"
+###  avec ou sans -P:  indique que les calculs doivent etre faits avec ou sans ponctuation
+###  avec -v:  mode verbose, imprimera l'ensemble des valeurs des paramÃ¨tres (fait deja partie du gabarit)
+
+#TODO: INCORPORER CODE AVEC GABARIT
