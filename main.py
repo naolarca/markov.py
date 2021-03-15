@@ -46,29 +46,40 @@ def mergeSort(alist):
 
 
 #Unigrammeeeeeeeee (sans punctuation par defaut)
-def unigramme(fichier):
+def unigramme(fichier, ponctu):
     with open(fichier, 'r', encoding='utf-8') as f:
         counts = {}
         for line in f:
            for word in line.split():
                 word = word.lower()
-                for char in word:
-                    if char in PONC:
-                        word = word.replace("--", " ")
-                        word = word.replace("-", " ")
-                        word = word.replace(char, " ")
-                for smallWord in word.split():
-                    if len(smallWord) < 3:
-                          smallWord = smallWord.replace(smallWord, "")
-                    if smallWord not in counts:
-                        counts[smallWord] = 1
-                    else:
-                        counts[smallWord] += 1
+                if ponctu == False:
+                    for char in word:
+                        if char in PONC:
+                            word = word.replace("--", " ")
+                            word = word.replace("-", " ")
+                            word = word.replace(char, " ")
+                    for smallWord in word.split():
+                        if len(smallWord) < 3:
+                              smallWord = smallWord.replace(smallWord, "")
+                        if smallWord not in counts:
+                            counts[smallWord] = 1
+                        else:
+                            counts[smallWord] += 1
+                else:
+                    for smallWord in word.split():
+                        #for smallWord in tinyWord.split("!"):
+                        if len(smallWord) < 3:
+                            smallWord = smallWord.replace(smallWord, "")
+                        if smallWord not in counts:
+                            counts[smallWord] = 1
+                        else:
+                            counts[smallWord] += 1
     del counts[""]
     for smallWord in counts:
         uni= MyStruct()
         uni.mot.append(smallWord)
         uni.frequence.append(counts[smallWord])
+        print(smallWord, counts[smallWord])
     return uni
 
 
@@ -164,8 +175,8 @@ def motFreqBi(index):
 
 #MAIN
 def main():
-    ngramme("Victor Hugo - Les miserables - Tome I.txt", 1)
-
+    #ngramme("Victor Hugo - Les miserables - Tome I.txt", 1)
+    allo=unigramme("Victor Hugo - Les miserables - Tome I.txt", True)
     #unigramme("Victor Hugo - L'homme qui rit.txt")
 
 main()
@@ -180,6 +191,7 @@ def UniAvecPunct():
     print("wesh...")
     #les ponctuactions sont alors consideres comme un mot
     # on doit le faire pour bi et ngramme aussi
+    #Pas necessaire de faire une autre fonction on peut creer un if statement dans les fonctions plus haut
 
 def selectionModeAnalyse(Mode):
     print("wesh...")
